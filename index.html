@@ -21,6 +21,7 @@
 
         .container {
             max-width: 700px;
+            width: 90%;
             padding: 40px;
             text-align: center;
             background: white;
@@ -39,6 +40,15 @@
             line-height: 1.6;
         }
 
+        input {
+            width: 80%;
+            padding: 14px;
+            margin-top: 20px;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
         .button {
             display: inline-block;
             margin-top: 25px;
@@ -48,6 +58,7 @@
             color: white;
             font-size: 17px;
             text-decoration: none;
+            border: none;
             cursor: pointer;
         }
 
@@ -61,17 +72,43 @@
 
     <div class="container">
 
-        <h1>Is It Worth It? 🚀</h1>
+        <h1>Is It Worth It?</h1>
 
         <p>
-            Find out whether your next purchase is really worth the money.
+            What are you thinking about buying?
         </p>
 
-        <a href="results.html" class="button">
+        <input
+            type="text"
+            id="product"
+            placeholder="e.g. iPhone 17, laptop, motorcycle..."
+        >
+
+        <br>
+
+        <button class="button" onclick="startTest()">
             Start the test
-        </a>
+        </button>
 
     </div>
+
+    <script>
+
+        function startTest() {
+
+            const product = document.getElementById("product").value;
+
+            if (product.trim() === "") {
+                alert("Please enter a product first.");
+                return;
+            }
+
+            localStorage.setItem("product", product);
+
+            window.location.href = "results.html";
+        }
+
+    </script>
 
 </body>
 
