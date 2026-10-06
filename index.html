@@ -8,17 +8,15 @@
     <title>Is It Worth It? — Should you buy it?</title>
 
     <style>
-
         :root {
-            --bg: #f8f8f6;
+            --bg: #f7f7f5;
             --surface: #ffffff;
             --text: #111111;
             --muted: #707070;
-            --light: #e8e8e5;
+            --light: #e5e5e2;
             --accent: #5b4bff;
             --accent-dark: #4638dc;
-            --soft-accent: #eeecff;
-            --green: #16845b;
+            --soft-accent: #efedff;
         }
 
         * {
@@ -37,15 +35,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
         button,
         input,
         select {
             font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .container {
@@ -53,10 +51,7 @@
             margin: auto;
         }
 
-
-        /* =========================
-           NAVIGATION
-        ========================= */
+        /* NAV */
 
         .nav {
             height: 80px;
@@ -71,22 +66,19 @@
             letter-spacing: -0.5px;
         }
 
-        .logo-dot {
+        .logo span {
             color: var(--accent);
         }
 
-        .nav-button {
+        .nav-link {
             font-size: 14px;
             color: var(--muted);
         }
 
-
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
-            padding: 100px 0 120px;
+            padding: 105px 0 115px;
             text-align: center;
         }
 
@@ -98,10 +90,10 @@
             border-radius: 100px;
             background: var(--soft-accent);
             color: var(--accent-dark);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
+            letter-spacing: .8px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
         }
 
         .eyebrow-dot {
@@ -112,12 +104,11 @@
         }
 
         .hero h1 {
-            max-width: 850px;
-            margin: 28px auto 0;
-            font-size: clamp(50px, 8vw, 86px);
-            line-height: 0.98;
+            max-width: 900px;
+            margin: 27px auto 0;
+            font-size: clamp(50px, 8vw, 88px);
+            line-height: .97;
             letter-spacing: -5px;
-            font-weight: 850;
         }
 
         .hero h1 span {
@@ -125,45 +116,37 @@
         }
 
         .hero-description {
-            max-width: 620px;
+            max-width: 610px;
             margin: 30px auto 0;
             color: var(--muted);
-            font-size: 19px;
+            font-size: 18px;
             line-height: 1.65;
         }
 
-        .hero-actions {
-            margin-top: 35px;
-        }
-
-        .primary-button {
+        .hero-button {
             display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 25px;
-            background: var(--text);
-            color: white;
+            margin-top: 32px;
+            padding: 16px 24px;
             border-radius: 10px;
-            font-size: 15px;
+            background: #111;
+            color: white;
+            font-size: 14px;
             font-weight: 700;
-            transition: 0.2s;
+            transition: .2s;
         }
 
-        .primary-button:hover {
+        .hero-button:hover {
             transform: translateY(-2px);
-            background: #292929;
+            background: #2d2d2d;
         }
 
         .hero-note {
-            margin-top: 14px;
-            color: #999999;
-            font-size: 12px;
+            margin-top: 13px;
+            color: #999;
+            font-size: 11px;
         }
 
-
-        /* =========================
-           INTRO
-        ========================= */
+        /* INTRO */
 
         .intro {
             padding: 90px 0;
@@ -178,6 +161,15 @@
             align-items: center;
         }
 
+        .section-eyebrow {
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         .intro h2 {
             margin: 0;
             font-size: 42px;
@@ -187,7 +179,7 @@
 
         .intro-text {
             color: var(--muted);
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.7;
         }
 
@@ -196,40 +188,28 @@
         }
 
         .mini-list {
-            margin-top: 25px;
             padding: 0;
+            margin: 25px 0 0;
             list-style: none;
         }
 
         .mini-list li {
-            margin: 13px 0;
             display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            font-size: 15px;
+            gap: 11px;
+            margin: 13px 0;
+            font-size: 14px;
+            color: #333;
         }
 
         .check {
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 800;
         }
 
-
-        /* =========================
-           EXAMPLE
-        ========================= */
+        /* EXAMPLE */
 
         .example {
-            padding: 110px 0;
-        }
-
-        .section-eyebrow {
-            color: var(--accent);
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+            padding: 105px 0;
         }
 
         .section-heading {
@@ -244,37 +224,37 @@
             max-width: 650px;
             margin-top: 18px;
             color: var(--muted);
-            font-size: 17px;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.65;
         }
 
         .example-box {
-            margin-top: 50px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.1fr .9fr;
+            margin-top: 45px;
+            overflow: hidden;
             border: 1px solid #dededb;
             border-radius: 20px;
-            overflow: hidden;
             background: white;
         }
 
-        .example-left {
+        .example-left,
+        .example-right {
             padding: 38px;
         }
 
         .example-right {
-            padding: 38px;
-            background: #111111;
+            background: #111;
             color: white;
         }
 
         .example-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 800;
-            color: #999999;
             margin-bottom: 12px;
+            color: #999;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .example-product {
@@ -285,56 +265,54 @@
 
         .example-price {
             margin-top: 8px;
-            font-size: 18px;
             color: var(--muted);
+            font-size: 17px;
         }
 
         .example-question {
-            margin-top: 40px;
+            margin-top: 38px;
             color: var(--muted);
             line-height: 1.6;
+            font-size: 14px;
         }
 
         .example-verdict {
             font-size: 34px;
+            line-height: 1.05;
             font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
+            letter-spacing: -1.5px;
         }
 
         .example-score {
             margin-top: 12px;
-            color: #bdbdbd;
-            font-size: 14px;
+            color: #aaa;
+            font-size: 13px;
         }
 
         .example-reason {
             margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #333333;
-            color: #bdbdbd;
-            font-size: 14px;
+            padding-top: 23px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 13px;
             line-height: 1.6;
         }
 
-
-        /* =========================
-           CALCULATOR
-        ========================= */
+        /* CALCULATOR */
 
         .calculator-section {
-            padding: 110px 0;
-            background: #111111;
+            padding: 105px 0 120px;
+            background: #111;
             color: white;
         }
 
         .calculator-heading {
             max-width: 700px;
-            margin-bottom: 45px;
+            margin-bottom: 42px;
         }
 
         .calculator-heading .section-eyebrow {
-            color: #a8a1ff;
+            color: #a9a3ff;
         }
 
         .calculator-heading .section-heading {
@@ -342,97 +320,69 @@
         }
 
         .calculator-heading .section-subtitle {
-            color: #999999;
+            color: #999;
         }
 
         .calculator {
-            max-width: 720px;
+            max-width: 760px;
             margin: auto;
+            padding: 38px;
+            border-radius: 20px;
             background: white;
             color: var(--text);
-            border-radius: 20px;
-            overflow: hidden;
         }
 
-        .progress-area {
-            padding: 25px 30px 0;
+        .form-section + .form-section {
+            margin-top: 42px;
+            padding-top: 38px;
+            border-top: 1px solid var(--light);
         }
 
-        .progress-top {
-            display: flex;
-            justify-content: space-between;
-            color: #888888;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .progress-track {
-            height: 4px;
-            background: #eeeeee;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 25%;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .form-body {
-            padding: 35px 40px 40px;
-        }
-
-        .step {
-            display: none;
-        }
-
-        .step.active {
-            display: block;
-            animation: fadeIn 0.25s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .step h3 {
+        .form-section-title {
             margin: 0;
-            font-size: 27px;
-            letter-spacing: -1px;
+            font-size: 21px;
+            letter-spacing: -.7px;
         }
 
-        .step-description {
-            margin: 8px 0 28px;
-            color: #777777;
-            font-size: 14px;
+        .form-section-description {
+            margin: 7px 0 25px;
+            color: #777;
+            font-size: 13px;
             line-height: 1.5;
         }
 
-        .optional {
-            color: #999999;
-            font-weight: normal;
-            font-size: 12px;
+        .optional-title {
+            display: inline-block;
+            margin-left: 7px;
+            padding: 4px 7px;
+            border-radius: 5px;
+            background: #f0f0ee;
+            color: #888;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
         }
 
         .field {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
         }
 
         label {
             display: block;
             margin-bottom: 7px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
         }
 
@@ -442,83 +392,71 @@
             padding: 13px 14px;
             border: 1px solid #d5d5d2;
             border-radius: 9px;
-            background: white;
-            color: #111111;
             outline: none;
-            transition: 0.15s;
+            background: white;
+            color: #111;
+            transition: .15s;
         }
 
         input:focus,
         select:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(91, 75, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(91, 75, 255, .1);
         }
 
-        .input-row {
+        .price-row {
             display: grid;
-            grid-template-columns: 1fr 140px;
-            gap: 12px;
+            grid-template-columns: 1fr 130px;
+            gap: 10px;
         }
 
-        .step-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 30px;
+        .optional-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
         }
 
-        .back-button,
-        .next-button,
-        .submit-button {
-            border: none;
-            border-radius: 9px;
-            padding: 14px 20px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .back-button {
-            background: #f1f1ef;
-            color: #555555;
-        }
-
-        .next-button,
-        .submit-button {
-            margin-left: auto;
-            background: var(--text);
-            color: white;
-        }
-
-        .next-button:hover,
-        .submit-button:hover {
-            background: #333333;
-        }
-
-        .skip-note {
+        .submit-area {
+            margin-top: 35px;
+            padding-top: 28px;
+            border-top: 1px solid var(--light);
             text-align: center;
-            margin-top: 14px;
-            color: #999999;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            border: 0;
+            border-radius: 10px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .submit-button:hover {
+            background: #333;
+        }
+
+        .privacy-note {
+            margin-top: 11px;
+            color: #999;
+            font-size: 10px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 0 45px;
+            background: #111;
+            color: #777;
+            text-align: center;
             font-size: 11px;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #111111;
-            color: #777777;
-            padding: 35px 0 45px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 750px) {
 
@@ -536,7 +474,7 @@
             }
 
             .hero-description {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .intro {
@@ -568,43 +506,42 @@
                 padding: 80px 0;
             }
 
-            .form-body {
-                padding: 30px 22px;
+            .calculator {
+                padding: 25px 20px;
             }
 
-            .progress-area {
-                padding: 20px 22px 0;
-            }
-
-            .input-row {
+            .field-grid,
+            .optional-fields {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
 
-            .nav-button {
+            .price-row {
+                grid-template-columns: 1fr 105px;
+            }
+
+            .nav-link {
                 display: none;
             }
         }
-
     </style>
 </head>
 
 
 <body>
 
-
-<!-- =========================
-     NAV
-========================= -->
-
 <header class="container">
 
     <nav class="nav">
 
         <div class="logo">
-            Is It Worth It<span class="logo-dot">?</span>
+            Is It Worth It<span>?</span>
         </div>
 
-        <a href="#calculator" class="nav-button">
+        <a
+            href="#calculator"
+            class="nav-link"
+        >
             Try the calculator →
         </a>
 
@@ -613,9 +550,7 @@
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -632,20 +567,19 @@
         </h1>
 
         <p class="hero-description">
-            Is It Worth It? helps you decide whether a purchase
+            A simple way to decide whether a purchase actually
             makes sense for you — before you spend the money.
         </p>
 
-        <div class="hero-actions">
-
-            <a href="#calculator" class="primary-button">
-                Analyze a purchase →
-            </a>
-
-        </div>
+        <a
+            href="#calculator"
+            class="hero-button"
+        >
+            Analyze a purchase →
+        </a>
 
         <div class="hero-note">
-            Free · Takes about a minute
+            Free · About 60 seconds
         </div>
 
     </div>
@@ -653,9 +587,7 @@
 </section>
 
 
-<!-- =========================
-     INTRO
-========================= -->
+<!-- INTRO -->
 
 <section class="intro">
 
@@ -678,40 +610,40 @@
             <div class="intro-text">
 
                 <p>
-                    A €1,000 purchase can be completely reasonable
+                    A €1,000 purchase can be perfectly reasonable
                     for one person and a terrible decision for another.
                 </p>
 
                 <p>
-                    That's why Is It Worth It? looks beyond the price
-                    and considers how the purchase fits into your life.
+                    That's why we look at the purchase in context,
+                    instead of judging it by price alone.
                 </p>
 
                 <ul class="mini-list">
 
                     <li>
                         <span class="check">✓</span>
-                        <span>How much you're spending</span>
+                        How much you're spending
                     </li>
 
                     <li>
                         <span class="check">✓</span>
-                        <span>How long you'll use it</span>
+                        How long you'll use it
                     </li>
 
                     <li>
                         <span class="check">✓</span>
-                        <span>How frequently you'll use it</span>
+                        How often you'll use it
                     </li>
 
                     <li>
                         <span class="check">✓</span>
-                        <span>Whether you can comfortably afford it</span>
+                        Whether you can comfortably afford it
                     </li>
 
                     <li>
                         <span class="check">✓</span>
-                        <span>How much you actually want it</span>
+                        How much you actually want it
                     </li>
 
                 </ul>
@@ -725,9 +657,7 @@
 </section>
 
 
-<!-- =========================
-     EXAMPLE
-========================= -->
+<!-- EXAMPLE -->
 
 <section class="example">
 
@@ -788,8 +718,6 @@
                 <div class="example-reason">
                     Frequent use and a long expected lifespan
                     make the cost easier to justify.
-                    Your personal financial situation would
-                    make the result more precise.
                 </div>
 
             </div>
@@ -801,11 +729,12 @@
 </section>
 
 
-<!-- =========================
-     CALCULATOR
-========================= -->
+<!-- CALCULATOR -->
 
-<section class="calculator-section" id="calculator">
+<section
+    class="calculator-section"
+    id="calculator"
+>
 
     <div class="container">
 
@@ -820,9 +749,8 @@
             </h2>
 
             <p class="section-subtitle">
-                The first four questions are all you need.
-                The remaining questions are optional and
-                make the analysis more personal.
+                Only the essential information is required.
+                The optional questions make your result more personal.
             </p>
 
         </div>
@@ -830,66 +758,31 @@
 
         <div class="calculator">
 
-            <div class="progress-area">
-
-                <div class="progress-top">
-
-                    <span id="stepLabel">
-                        Step 1 of 4
-                    </span>
-
-                    <span id="stepType">
-                        Essential
-                    </span>
-
-                </div>
-
-                <div class="progress-track">
-
-                    <div
-                        class="progress-bar"
-                        id="progressBar">
-                    </div>
-
-                </div>
-
-            </div>
+            <form id="calculatorForm">
 
 
-            <form
-                id="calculatorForm"
-                class="form-body"
-            >
+                <!-- ESSENTIAL -->
 
+                <div class="form-section">
 
-                <!-- =====================
-                     STEP 1
-                ====================== -->
-
-                <div
-                    class="step active"
-                    data-step="1"
-                >
-
-                    <h3>
-                        What are you buying?
+                    <h3 class="form-section-title">
+                        The essentials
                     </h3>
 
-                    <p class="step-description">
-                        These are the only questions we absolutely
-                        need to calculate a basic result.
+                    <p class="form-section-description">
+                        We need these four things to calculate your basic result.
                     </p>
 
 
                     <div class="field">
 
                         <label for="product">
-                            Product
+                            What are you buying?
                         </label>
 
                         <input
-                            type="text"
                             id="product"
+                            type="text"
                             placeholder="e.g. iPhone 17, Yamaha R7..."
                             required
                         >
@@ -897,50 +790,72 @@
                     </div>
 
 
-                    <div class="field">
+                    <div class="field-grid">
 
-                        <label for="category">
-                            Category
-                        </label>
+                        <div class="field">
 
-                        <select
-                            id="category"
-                            required
-                        >
+                            <label for="category">
+                                Category
+                            </label>
 
-                            <option value="">
-                                Choose a category
-                            </option>
+                            <select
+                                id="category"
+                                required
+                            >
 
-                            <option value="electronics">
-                                Electronics
-                            </option>
+                                <option value="">
+                                    Choose a category
+                                </option>
 
-                            <option value="vehicle">
-                                Car / Motorcycle
-                            </option>
+                                <option value="electronics">
+                                    Electronics
+                                </option>
 
-                            <option value="gaming">
-                                Gaming
-                            </option>
+                                <option value="vehicle">
+                                    Car / Motorcycle
+                                </option>
 
-                            <option value="fashion">
-                                Fashion
-                            </option>
+                                <option value="gaming">
+                                    Gaming
+                                </option>
 
-                            <option value="home">
-                                Home
-                            </option>
+                                <option value="fashion">
+                                    Fashion
+                                </option>
 
-                            <option value="fitness">
-                                Fitness
-                            </option>
+                                <option value="home">
+                                    Home
+                                </option>
 
-                            <option value="other">
-                                Other
-                            </option>
+                                <option value="fitness">
+                                    Fitness
+                                </option>
 
-                        </select>
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="years">
+                                Expected years of use
+                            </label>
+
+                            <input
+                                id="years"
+                                type="number"
+                                min="0.5"
+                                step="0.5"
+                                placeholder="e.g. 4"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -951,14 +866,14 @@
                             Purchase price
                         </label>
 
-                        <div class="input-row">
+                        <div class="price-row">
 
                             <input
-                                type="number"
                                 id="price"
-                                placeholder="e.g. 999"
+                                type="number"
                                 min="0"
                                 step="0.01"
+                                placeholder="e.g. 999"
                                 required
                             >
 
@@ -982,297 +897,155 @@
 
                     </div>
 
-
-                    <div class="field">
-
-                        <label for="years">
-                            Expected years of use
-                        </label>
-
-                        <input
-                            type="number"
-                            id="years"
-                            placeholder="e.g. 4"
-                            min="0.5"
-                            step="0.5"
-                            required
-                        >
-
-                    </div>
+                </div>
 
 
-                    <div class="step-buttons">
+                <!-- OPTIONAL -->
 
-                        <button
-                            type="button"
-                            class="next-button"
-                            onclick="nextStep()"
-                        >
-                            Continue →
-                        </button>
+                <div class="form-section">
+
+                    <h3 class="form-section-title">
+                        Make your result more personal
+                        <span class="optional-title">
+                            Optional
+                        </span>
+                    </h3>
+
+                    <p class="form-section-description">
+                        You can skip any of these. They simply help us
+                        understand your situation better.
+                    </p>
+
+
+                    <div class="optional-fields">
+
+
+                        <div class="field">
+
+                            <label for="frequency">
+                                How often will you use it?
+                            </label>
+
+                            <select id="frequency">
+
+                                <option value="">
+                                    Prefer not to say
+                                </option>
+
+                                <option value="daily">
+                                    Every day
+                                </option>
+
+                                <option value="weekly">
+                                    Several times a week
+                                </option>
+
+                                <option value="monthly">
+                                    A few times a month
+                                </option>
+
+                                <option value="rarely">
+                                    Rarely
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="desire">
+                                How badly do you want it? (1–10)
+                            </label>
+
+                            <input
+                                id="desire"
+                                type="number"
+                                min="1"
+                                max="10"
+                                placeholder="e.g. 8"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="income">
+                                Monthly income
+                            </label>
+
+                            <input
+                                id="income"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="e.g. 1800"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="expenses">
+                                Monthly essential expenses
+                            </label>
+
+                            <input
+                                id="expenses"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="e.g. 1000"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="alternative">
+                                Is there a cheaper alternative?
+                            </label>
+
+                            <select id="alternative">
+
+                                <option value="">
+                                    Prefer not to say
+                                </option>
+
+                                <option value="no">
+                                    No
+                                </option>
+
+                                <option value="yes">
+                                    Yes
+                                </option>
+
+                            </select>
+
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <!-- =====================
-                     STEP 2
-                ====================== -->
-
-                <div
-                    class="step"
-                    data-step="2"
-                >
-
-                    <h3>
-                        How will you use it?
-                    </h3>
-
-                    <p class="step-description">
-                        This is optional. Knowing how often you'll
-                        use the product helps us estimate its value.
-                    </p>
-
-
-                    <div class="field">
-
-                        <label for="frequency">
-                            How often will you use it?
-                            <span class="optional">
-                                — optional
-                            </span>
-                        </label>
-
-                        <select id="frequency">
-
-                            <option value="">
-                                Prefer not to say
-                            </option>
-
-                            <option value="daily">
-                                Every day
-                            </option>
-
-                            <option value="weekly">
-                                Several times a week
-                            </option>
-
-                            <option value="monthly">
-                                A few times a month
-                            </option>
-
-                            <option value="rarely">
-                                Rarely
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="step-buttons">
-
-                        <button
-                            type="button"
-                            class="back-button"
-                            onclick="previousStep()"
-                        >
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="next-button"
-                            onclick="nextStep()"
-                        >
-                            Continue →
-                        </button>
-
-                    </div>
-
-                    <div class="skip-note">
-                        You can leave this blank.
-                    </div>
-
-                </div>
-
-
-                <!-- =====================
-                     STEP 3
-                ====================== -->
-
-                <div
-                    class="step"
-                    data-step="3"
-                >
-
-                    <h3>
-                        What can you comfortably afford?
-                    </h3>
-
-                    <p class="step-description">
-                        Optional. These numbers help us understand
-                        whether the purchase fits your current budget.
-                    </p>
-
-
-                    <div class="field">
-
-                        <label for="income">
-                            Monthly income
-                            <span class="optional">
-                                — optional
-                            </span>
-                        </label>
-
-                        <input
-                            type="number"
-                            id="income"
-                            placeholder="e.g. 1800"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="expenses">
-                            Monthly essential expenses
-                            <span class="optional">
-                                — optional
-                            </span>
-                        </label>
-
-                        <input
-                            type="number"
-                            id="expenses"
-                            placeholder="e.g. 1000"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="step-buttons">
-
-                        <button
-                            type="button"
-                            class="back-button"
-                            onclick="previousStep()"
-                        >
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="next-button"
-                            onclick="nextStep()"
-                        >
-                            Continue →
-                        </button>
-
-                    </div>
-
-                    <div class="skip-note">
-                        You can skip both questions.
-                    </div>
-
-                </div>
-
-
-                <!-- =====================
-                     STEP 4
-                ====================== -->
-
-                <div
-                    class="step"
-                    data-step="4"
-                >
-
-                    <h3>
-                        One last thing.
-                    </h3>
-
-                    <p class="step-description">
-                        These questions are completely optional,
-                        but they help us understand the purchase
-                        from your perspective.
-                    </p>
-
-
-                    <div class="field">
-
-                        <label for="desire">
-                            How badly do you want it?
-                            <span class="optional">
-                                — optional
-                            </span>
-                        </label>
-
-                        <input
-                            type="number"
-                            id="desire"
-                            min="1"
-                            max="10"
-                            placeholder="1–10"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="alternative">
-                            Is there a cheaper alternative?
-                            <span class="optional">
-                                — optional
-                            </span>
-                        </label>
-
-                        <select id="alternative">
-
-                            <option value="">
-                                Prefer not to say
-                            </option>
-
-                            <option value="no">
-                                No
-                            </option>
-
-                            <option value="yes">
-                                Yes
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="step-buttons">
-
-                        <button
-                            type="button"
-                            class="back-button"
-                            onclick="previousStep()"
-                        >
-                            ← Back
-                        </button>
-
-                        <button
-                            type="submit"
-                            class="submit-button"
-                        >
-                            Calculate my result →
-                        </button>
-
-                    </div>
-
-                    <div class="skip-note">
-                        Your answers are processed in your browser.
+                <!-- SUBMIT -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Calculate my result →
+                    </button>
+
+                    <div class="privacy-note">
+                        Your answers are processed locally in your browser.
                     </div>
 
                 </div>
@@ -1286,10 +1059,6 @@
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <div class="container">
@@ -1301,281 +1070,115 @@
 
 <script>
 
-    let currentStep = 1;
-
-    const totalSteps = 4;
-
-
-    function showStep(step) {
-
-        document
-            .querySelectorAll(".step")
-            .forEach(function(element) {
-
-                element.classList.remove("active");
-
-            });
-
-
-        document
-            .querySelector(
-                '.step[data-step="' + step + '"]'
-            )
-            .classList.add("active");
-
-
-        document.getElementById("stepLabel").textContent =
-            "Step " + step + " of " + totalSteps;
-
-
-        const progress =
-            (step / totalSteps) * 100;
-
-        document.getElementById("progressBar").style.width =
-            progress + "%";
-
-
-        if (step === 1) {
-
-            document.getElementById("stepType").textContent =
-                "Essential";
-
-        } else {
-
-            document.getElementById("stepType").textContent =
-                "Optional";
-
-        }
-
-    }
-
-
-    function validateStepOne() {
-
-        const product =
-            document.getElementById("product").value.trim();
-
-        const category =
-            document.getElementById("category").value;
-
-        const price =
-            parseFloat(
-                document.getElementById("price").value
-            );
-
-        const years =
-            parseFloat(
-                document.getElementById("years").value
-            );
-
-
-        if (!product) {
-
-            alert("Please enter the product you are considering.");
-
-            return false;
-        }
-
-
-        if (!category) {
-
-            alert("Please choose a category.");
-
-            return false;
-        }
-
-
-        if (
-            isNaN(price) ||
-            price <= 0
-        ) {
-
-            alert("Please enter a valid purchase price.");
-
-            return false;
-        }
-
-
-        if (
-            isNaN(years) ||
-            years <= 0
-        ) {
-
-            alert("Please enter the expected years of use.");
-
-            return false;
-        }
-
-
-        return true;
-
-    }
-
-
-    function nextStep() {
-
-        if (currentStep === 1) {
-
-            if (!validateStepOne()) {
-                return;
-            }
-
-        }
-
-
-        if (currentStep < totalSteps) {
-
-            currentStep++;
-
-            showStep(currentStep);
-
-        }
-
-    }
-
-
-    function previousStep() {
-
-        if (currentStep > 1) {
-
-            currentStep--;
-
-            showStep(currentStep);
-
-        }
-
-    }
-
-
     document
         .getElementById("calculatorForm")
-        .addEventListener(
-            "submit",
-            function(event) {
+        .addEventListener("submit", function(event) {
 
-                event.preventDefault();
+            event.preventDefault();
 
 
-                if (!validateStepOne()) {
-                    return;
-                }
+            const product =
+                document
+                    .getElementById("product")
+                    .value
+                    .trim();
 
+            const category =
+                document
+                    .getElementById("category")
+                    .value;
 
-                const product =
+            const price =
+                parseFloat(
                     document
-                        .getElementById("product")
+                        .getElementById("price")
                         .value
-                        .trim();
-
-
-                const category =
-                    document
-                        .getElementById("category")
-                        .value;
-
-
-                const price =
-                    parseFloat(
-                        document
-                            .getElementById("price")
-                            .value
-                    );
-
-
-                const currency =
-                    document
-                        .getElementById("currency")
-                        .value;
-
-
-                const years =
-                    parseFloat(
-                        document
-                            .getElementById("years")
-                            .value
-                    );
-
-
-                const frequency =
-                    document
-                        .getElementById("frequency")
-                        .value;
-
-
-                const incomeValue =
-                    document
-                        .getElementById("income")
-                        .value;
-
-
-                const expensesValue =
-                    document
-                        .getElementById("expenses")
-                        .value;
-
-
-                const desireValue =
-                    document
-                        .getElementById("desire")
-                        .value;
-
-
-                const alternative =
-                    document
-                        .getElementById("alternative")
-                        .value;
-
-
-                const purchaseData = {
-
-                    product: product,
-
-                    category: category,
-
-                    price: price,
-
-                    currency: currency,
-
-                    years: years,
-
-                    frequency:
-                        frequency || null,
-
-                    income:
-                        incomeValue !== ""
-                            ? parseFloat(incomeValue)
-                            : null,
-
-                    expenses:
-                        expensesValue !== ""
-                            ? parseFloat(expensesValue)
-                            : null,
-
-                    desire:
-                        desireValue !== ""
-                            ? parseInt(desireValue)
-                            : null,
-
-                    alternative:
-                        alternative || null
-
-                };
-
-
-                localStorage.setItem(
-                    "purchaseData",
-                    JSON.stringify(purchaseData)
                 );
 
+            const currency =
+                document
+                    .getElementById("currency")
+                    .value;
 
-                window.location.href =
-                    "results.html";
+            const years =
+                parseFloat(
+                    document
+                        .getElementById("years")
+                        .value
+                );
 
-            }
-        );
+            const frequency =
+                document
+                    .getElementById("frequency")
+                    .value;
+
+            const incomeInput =
+                document
+                    .getElementById("income")
+                    .value;
+
+            const expensesInput =
+                document
+                    .getElementById("expenses")
+                    .value;
+
+            const desireInput =
+                document
+                    .getElementById("desire")
+                    .value;
+
+            const alternative =
+                document
+                    .getElementById("alternative")
+                    .value;
 
 
-    showStep(1);
+            const purchaseData = {
+
+                product: product,
+
+                category: category,
+
+                price: price,
+
+                currency: currency,
+
+                years: years,
+
+                frequency:
+                    frequency || null,
+
+                income:
+                    incomeInput !== ""
+                        ? parseFloat(incomeInput)
+                        : null,
+
+                expenses:
+                    expensesInput !== ""
+                        ? parseFloat(expensesInput)
+                        : null,
+
+                desire:
+                    desireInput !== ""
+                        ? parseInt(desireInput)
+                        : null,
+
+                alternative:
+                    alternative || null
+
+            };
+
+
+            localStorage.setItem(
+                "purchaseData",
+                JSON.stringify(purchaseData)
+            );
+
+
+            window.location.href =
+                "results.html";
+
+        });
 
 </script>
 
