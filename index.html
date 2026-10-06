@@ -8,107 +8,317 @@
     <title>Is It Worth It?</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f5f7fb;
             color: #172033;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 750px;
             width: 90%;
-            padding: 40px;
-            text-align: center;
+            margin: 60px auto;
+            padding: 45px;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         }
 
         h1 {
+            text-align: center;
             font-size: 48px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        p {
-            font-size: 20px;
+        .subtitle {
+            text-align: center;
             color: #667085;
-            line-height: 1.6;
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 40px;
         }
 
-        input {
-            width: 80%;
-            padding: 14px;
+        h2 {
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
             margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
             border: 1px solid #d0d5dd;
             border-radius: 10px;
-            font-size: 17px;
+            font-size: 16px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #4f46e5;
         }
 
         .button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
+            width: 100%;
+            margin-top: 35px;
+            padding: 16px;
+            border: none;
             border-radius: 10px;
             background: #4f46e5;
             color: white;
-            font-size: 17px;
-            text-decoration: none;
-            border: none;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
         }
 
         .button:hover {
             background: #4338ca;
         }
+
+        .note {
+            margin-top: 10px;
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .section {
+            border-top: 1px solid #eaecf0;
+            padding-top: 25px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>Is It Worth It?</h1>
+    <h1>Is It Worth It?</h1>
 
-        <p>
+    <p class="subtitle">
+        Find out whether your next purchase is actually worth the money.
+        Answer a few questions and get your personalized verdict.
+    </p>
+
+    <form id="calculatorForm">
+
+        <h2>About the purchase</h2>
+
+        <label for="product">
             What are you thinking about buying?
-        </p>
+        </label>
 
         <input
             type="text"
             id="product"
             placeholder="e.g. iPhone 17, laptop, motorcycle..."
+            required
         >
 
-        <br>
+        <label for="category">
+            Category
+        </label>
 
-        <button class="button" onclick="startTest()">
-            Start the test
+        <select id="category" required>
+            <option value="">Select a category</option>
+            <option value="electronics">Electronics</option>
+            <option value="vehicle">Car / Motorcycle</option>
+            <option value="fashion">Fashion</option>
+            <option value="home">Home</option>
+            <option value="gaming">Gaming</option>
+            <option value="fitness">Fitness</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="price">
+            Purchase price
+        </label>
+
+        <input
+            type="number"
+            id="price"
+            placeholder="e.g. 999"
+            min="0"
+            step="0.01"
+            required
+        >
+
+        <label for="currency">
+            Currency
+        </label>
+
+        <select id="currency">
+            <option value="€">EUR (€)</option>
+            <option value="$">USD ($)</option>
+            <option value="£">GBP (£)</option>
+        </select>
+
+        <div class="section">
+
+            <h2>How will you use it?</h2>
+
+            <label for="years">
+                How many years do you expect to use it?
+            </label>
+
+            <input
+                type="number"
+                id="years"
+                placeholder="e.g. 4"
+                min="0.5"
+                step="0.5"
+                required
+            >
+
+            <label for="frequency">
+                How often will you use it?
+            </label>
+
+            <select id="frequency" required>
+                <option value="">Select frequency</option>
+                <option value="daily">Every day</option>
+                <option value="weekly">Several times a week</option>
+                <option value="monthly">A few times a month</option>
+                <option value="rarely">Rarely</option>
+            </select>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Your finances</h2>
+
+            <label for="income">
+                Monthly income
+            </label>
+
+            <input
+                type="number"
+                id="income"
+                placeholder="e.g. 1800"
+                min="0"
+                step="0.01"
+                required
+            >
+
+            <label for="expenses">
+                Monthly essential expenses
+            </label>
+
+            <input
+                type="number"
+                id="expenses"
+                placeholder="e.g. 1000"
+                min="0"
+                step="0.01"
+                required
+            >
+
+        </div>
+
+        <div class="section">
+
+            <h2>How much do you want it?</h2>
+
+            <label for="desire">
+                How badly do you want this purchase? (1–10)
+            </label>
+
+            <input
+                type="number"
+                id="desire"
+                min="1"
+                max="10"
+                placeholder="e.g. 8"
+                required
+            >
+
+            <label for="alternative">
+                Is there a cheaper alternative?
+            </label>
+
+            <select id="alternative">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+
+        </div>
+
+        <button type="submit" class="button">
+            Calculate my result
         </button>
 
-    </div>
+    </form>
 
-    <script>
+</div>
 
-        function startTest() {
+<script>
 
-            const product = document.getElementById("product").value;
+    document
+        .getElementById("calculatorForm")
+        .addEventListener("submit", function(event) {
 
-            if (product.trim() === "") {
-                alert("Please enter a product first.");
+            event.preventDefault();
+
+            const product = document.getElementById("product").value.trim();
+            const category = document.getElementById("category").value;
+            const price = parseFloat(document.getElementById("price").value);
+            const currency = document.getElementById("currency").value;
+            const years = parseFloat(document.getElementById("years").value);
+            const frequency = document.getElementById("frequency").value;
+            const income = parseFloat(document.getElementById("income").value);
+            const expenses = parseFloat(document.getElementById("expenses").value);
+            const desire = parseInt(document.getElementById("desire").value);
+            const alternative = document.getElementById("alternative").value;
+
+            if (
+                !product ||
+                !category ||
+                isNaN(price) ||
+                isNaN(years) ||
+                !frequency ||
+                isNaN(income) ||
+                isNaN(expenses) ||
+                isNaN(desire)
+            ) {
+                alert("Please complete all required fields.");
                 return;
             }
 
-            localStorage.setItem("product", product);
+            const purchaseData = {
+                product: product,
+                category: category,
+                price: price,
+                currency: currency,
+                years: years,
+                frequency: frequency,
+                income: income,
+                expenses: expenses,
+                desire: desire,
+                alternative: alternative
+            };
+
+            localStorage.setItem(
+                "purchaseData",
+                JSON.stringify(purchaseData)
+            );
 
             window.location.href = "results.html";
-        }
+        });
 
-    </script>
+</script>
 
 </body>
 
