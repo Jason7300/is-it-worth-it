@@ -8,95 +8,486 @@
     <title>Your Result - Is It Worth It?</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f5f7fb;
             color: #172033;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 800px;
             width: 90%;
-            padding: 40px;
-            text-align: center;
+            margin: 60px auto;
+        }
+
+        .card {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
         }
 
         h1 {
+            text-align: center;
             font-size: 42px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .product {
-            font-size: 28px;
+            text-align: center;
+            font-size: 30px;
             font-weight: bold;
             color: #4f46e5;
+            margin: 20px 0 35px;
+        }
+
+        .verdict {
+            text-align: center;
+            font-size: 38px;
+            font-weight: bold;
             margin: 25px 0;
         }
 
-        p {
-            font-size: 20px;
+        .score {
+            text-align: center;
+            font-size: 24px;
             color: #667085;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            padding: 20px;
+            background: #f8f9fc;
+            border-radius: 12px;
+        }
+
+        .stat-title {
+            color: #667085;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .explanation {
+            color: #667085;
+            font-size: 18px;
             line-height: 1.6;
         }
 
-        a {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
+        .button {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 16px;
             border-radius: 10px;
             background: #4f46e5;
             color: white;
             text-decoration: none;
-            font-size: 17px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
         }
 
-        a:hover {
+        .button:hover {
             background: #4338ca;
+        }
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .product {
+                font-size: 24px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
+
+    <div class="card">
 
         <h1>Your Result</h1>
 
-        <p>
-            You are checking:
+        <div class="product" id="productName">
+            Product
+        </div>
+
+        <div class="verdict" id="verdict">
+            Calculating...
+        </div>
+
+        <div class="score" id="score">
+            Score: --
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Purchase summary</h2>
+
+        <div class="stats">
+
+            <div class="stat">
+                <div class="stat-title">
+                    Purchase price
+                </div>
+
+                <div class="stat-value" id="price">
+                    --
+                </div>
+            </div>
+
+
+            <div class="stat">
+                <div class="stat-title">
+                    Expected use
+                </div>
+
+                <div class="stat-value" id="years">
+                    --
+                </div>
+            </div>
+
+
+            <div class="stat">
+                <div class="stat-title">
+                    Monthly income
+                </div>
+
+                <div class="stat-value" id="income">
+                    --
+                </div>
+            </div>
+
+
+            <div class="stat">
+                <div class="stat-title">
+                    Monthly expenses
+                </div>
+
+                <div class="stat-value" id="expenses">
+                    --
+                </div>
+            </div>
+
+
+            <div class="stat">
+                <div class="stat-title">
+                    Cost per month of ownership
+                </div>
+
+                <div class="stat-value" id="monthlyCost">
+                    --
+                </div>
+            </div>
+
+
+            <div class="stat">
+                <div class="stat-title">
+                    Desire level
+                </div>
+
+                <div class="stat-value" id="desire">
+                    --
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Our analysis</h2>
+
+        <p class="explanation" id="explanation">
+            --
         </p>
 
-        <div class="product" id="productName"></div>
-
-        <p>
-            Your personalized analysis will appear here.
-        </p>
-
-        <a href="index.html">
-            ← Check another product
+        <a href="index.html" class="button">
+            ← Check another purchase
         </a>
 
     </div>
 
-    <script>
+</div>
 
-        const product = localStorage.getItem("product");
 
-        if (product) {
-            document.getElementById("productName").textContent = product;
+<script>
+
+    const storedData = localStorage.getItem("purchaseData");
+
+    if (!storedData) {
+
+        document.getElementById("verdict").textContent =
+            "No purchase found";
+
+        document.getElementById("score").textContent =
+            "Please return to the calculator.";
+
+    } else {
+
+        const data = JSON.parse(storedData);
+
+        /*
+         * BASIC CALCULATION
+         */
+
+        const disposableIncome =
+            data.income - data.expenses;
+
+        const monthlyCost =
+            data.price / (data.years * 12);
+
+        /*
+         * AFFORDABILITY
+         *
+         * How many months of disposable income
+         * are required to pay for the purchase?
+         */
+
+        let affordabilityScore = 0;
+
+        if (disposableIncome <= 0) {
+
+            affordabilityScore = 0;
+
         } else {
-            document.getElementById("productName").textContent = "No product selected";
+
+            const monthsOfDisposableIncome =
+                data.price / disposableIncome;
+
+            if (monthsOfDisposableIncome <= 0.5) {
+                affordabilityScore = 40;
+            }
+            else if (monthsOfDisposableIncome <= 1) {
+                affordabilityScore = 35;
+            }
+            else if (monthsOfDisposableIncome <= 2) {
+                affordabilityScore = 25;
+            }
+            else if (monthsOfDisposableIncome <= 4) {
+                affordabilityScore = 15;
+            }
+            else {
+                affordabilityScore = 5;
+            }
         }
 
-    </script>
+
+        /*
+         * DESIRE SCORE
+         */
+
+        const desireScore =
+            data.desire * 4;
+
+
+        /*
+         * USAGE SCORE
+         */
+
+        let usageScore = 0;
+
+        if (data.frequency === "daily") {
+            usageScore = 20;
+        }
+        else if (data.frequency === "weekly") {
+            usageScore = 15;
+        }
+        else if (data.frequency === "monthly") {
+            usageScore = 8;
+        }
+        else {
+            usageScore = 3;
+        }
+
+
+        /*
+         * LONG-TERM VALUE
+         */
+
+        let durationScore = 0;
+
+        if (data.years >= 5) {
+            durationScore = 20;
+        }
+        else if (data.years >= 3) {
+            durationScore = 15;
+        }
+        else if (data.years >= 2) {
+            durationScore = 10;
+        }
+        else {
+            durationScore = 5;
+        }
+
+
+        /*
+         * ALTERNATIVE PENALTY
+         */
+
+        let alternativePenalty = 0;
+
+        if (data.alternative === "yes") {
+            alternativePenalty = 10;
+        }
+
+
+        /*
+         * FINAL SCORE
+         */
+
+        let finalScore =
+            affordabilityScore +
+            desireScore +
+            usageScore +
+            durationScore -
+            alternativePenalty;
+
+
+        /*
+         * Keep score between 0 and 100
+         */
+
+        finalScore =
+            Math.max(0, Math.min(100, finalScore));
+
+
+        /*
+         * VERDICT
+         */
+
+        let verdict = "";
+
+        if (finalScore >= 75) {
+            verdict = "YES — It looks worth it";
+        }
+        else if (finalScore >= 55) {
+            verdict = "MAYBE — Think about it";
+        }
+        else if (finalScore >= 35) {
+            verdict = "CAUTION — Probably not";
+        }
+        else {
+            verdict = "NO — It doesn't look worth it";
+        }
+
+
+        /*
+         * DISPLAY RESULTS
+         */
+
+        document.getElementById("productName").textContent =
+            data.product;
+
+        document.getElementById("verdict").textContent =
+            verdict;
+
+        document.getElementById("score").textContent =
+            "Score: " + Math.round(finalScore) + "/100";
+
+        document.getElementById("price").textContent =
+            data.currency +
+            data.price.toLocaleString();
+
+        document.getElementById("years").textContent =
+            data.years + " years";
+
+        document.getElementById("income").textContent =
+            data.currency +
+            data.income.toLocaleString();
+
+        document.getElementById("expenses").textContent =
+            data.currency +
+            data.expenses.toLocaleString();
+
+        document.getElementById("monthlyCost").textContent =
+            data.currency +
+            monthlyCost.toFixed(2);
+
+        document.getElementById("desire").textContent =
+            data.desire + "/10";
+
+
+        /*
+         * EXPLANATION
+         */
+
+        let explanation = "";
+
+        if (finalScore >= 75) {
+
+            explanation =
+                "Based on your answers, this purchase looks financially reasonable. " +
+                "You expect to use it for a significant amount of time and your desire " +
+                "for the product is relatively high. The estimated monthly ownership cost " +
+                "also appears manageable compared with your disposable income.";
+
+        }
+        else if (finalScore >= 55) {
+
+            explanation =
+                "This purchase could make sense, but there are some reasons to think twice. " +
+                "The numbers are not clearly bad, but the purchase may deserve a little more " +
+                "consideration before spending the money.";
+
+        }
+        else if (finalScore >= 35) {
+
+            explanation =
+                "The numbers suggest that this purchase may not provide enough value for the " +
+                "money. Consider waiting, saving more, choosing a cheaper alternative, or " +
+                "thinking about how frequently you will actually use it.";
+
+        }
+        else {
+
+            explanation =
+                "Based on your answers, this purchase currently looks difficult to justify. " +
+                "The price appears relatively high compared with your available money and/or " +
+                "the expected use of the product.";
+
+        }
+
+        document.getElementById("explanation").textContent =
+            explanation;
+
+    }
+
+</script>
 
 </body>
 
