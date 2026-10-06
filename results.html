@@ -21,6 +21,7 @@
 
         .container {
             max-width: 700px;
+            width: 90%;
             padding: 40px;
             text-align: center;
             background: white;
@@ -31,6 +32,13 @@
         h1 {
             font-size: 42px;
             margin-bottom: 15px;
+        }
+
+        .product {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4f46e5;
+            margin: 25px 0;
         }
 
         p {
@@ -63,14 +71,32 @@
         <h1>Your Result</h1>
 
         <p>
-            This is where your personalized result will appear.
+            You are checking:
+        </p>
+
+        <div class="product" id="productName"></div>
+
+        <p>
+            Your personalized analysis will appear here.
         </p>
 
         <a href="index.html">
-            ← Back to the test
+            ← Check another product
         </a>
 
     </div>
+
+    <script>
+
+        const product = localStorage.getItem("product");
+
+        if (product) {
+            document.getElementById("productName").textContent = product;
+        } else {
+            document.getElementById("productName").textContent = "No product selected";
+        }
+
+    </script>
 
 </body>
 
