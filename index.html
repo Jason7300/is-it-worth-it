@@ -5,264 +5,1124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Is It Worth It?</title>
+    <title>Is It Worth It? — Make smarter purchase decisions</title>
 
     <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #101828;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .container {
-            max-width: 750px;
-            width: 90%;
-            margin: 60px auto;
-            padding: 45px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            width: min(1100px, 92%);
+            margin: auto;
         }
 
-        h1 {
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            color: #667085;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 90px 0 100px;
             text-align: center;
-            font-size: 48px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: #eeedff;
+            color: #5148d8;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: auto;
+            font-size: clamp(48px, 7vw, 78px);
+            line-height: 1.02;
+            letter-spacing: -4px;
+            font-weight: 850;
+        }
+
+        .hero h1 span {
+            color: #635bff;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            margin: 28px auto 35px;
+            font-size: 20px;
+            color: #667085;
+            line-height: 1.6;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 28px;
+            border-radius: 12px;
+            background: #635bff;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(99, 91, 255, 0.25);
+            transition: 0.2s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            background: #5148d8;
+        }
+
+        .hero-note {
+            margin-top: 14px;
+            font-size: 13px;
+            color: #98a2b3;
+        }
+
+
+        /* =========================
+           SECTION TITLES
+        ========================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            text-align: center;
+            color: #635bff;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 10px;
         }
 
-        .subtitle {
+        .section-title {
             text-align: center;
-            color: #667085;
-            font-size: 20px;
-            line-height: 1.5;
-            margin-bottom: 40px;
+            font-size: 40px;
+            letter-spacing: -1.5px;
+            margin: 0 auto 15px;
         }
 
-        h2 {
-            margin-top: 35px;
-            margin-bottom: 20px;
+        .section-description {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+            color: #667085;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .step {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #eeedff;
+            color: #635bff;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+        .step h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #667085;
+        }
+
+
+        /* =========================
+           EXAMPLE
+        ========================= */
+
+        .example-section {
+            background: #101828;
+            color: white;
+        }
+
+        .example-section .section-label {
+            color: #a9a4ff;
+        }
+
+        .example-section .section-description {
+            color: #98a2b3;
+        }
+
+        .example-card {
+            max-width: 850px;
+            margin: 50px auto 0;
+            padding: 35px;
+            border-radius: 20px;
+            background: #1d2939;
+            border: 1px solid #344054;
+        }
+
+        .example-product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #344054;
+        }
+
+        .example-product h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .example-price {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .example-result {
+            margin-top: 28px;
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #d1fadf;
+            color: #067647;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .example-result h3 {
+            font-size: 30px;
+            margin: 15px 0 8px;
+        }
+
+        .example-result p {
+            color: #98a2b3;
+            margin: 0;
+        }
+
+        .example-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .example-stat {
+            background: #101828;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .example-stat small {
+            color: #98a2b3;
+        }
+
+        .example-stat strong {
+            display: block;
+            margin-top: 5px;
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           FACTORS
+        ========================= */
+
+        .factors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 50px;
+        }
+
+        .factor {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .factor strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 17px;
+        }
+
+        .factor span {
+            color: #667085;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CALCULATOR
+        ========================= */
+
+        .calculator-section {
+            background: #f0f1ff;
+        }
+
+        .calculator {
+            max-width: 760px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 22px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(16, 24, 40, 0.08);
+        }
+
+        .form-section {
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            margin-top: 0;
+            font-size: 21px;
         }
 
         label {
             display: block;
-            font-weight: bold;
             margin-top: 20px;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         input,
         select {
             width: 100%;
-            padding: 14px;
+            padding: 13px 14px;
             border: 1px solid #d0d5dd;
             border-radius: 10px;
-            font-size: 16px;
+            background: white;
+            color: #101828;
+            font-size: 15px;
         }
 
         input:focus,
         select:focus {
             outline: none;
-            border-color: #4f46e5;
+            border-color: #635bff;
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.1);
         }
 
-        .button {
+        .calculate-button {
             width: 100%;
-            margin-top: 35px;
-            padding: 16px;
-            border: none;
-            border-radius: 10px;
-            background: #4f46e5;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            background: #4338ca;
-        }
-
-        .note {
             margin-top: 10px;
-            color: #667085;
-            font-size: 14px;
+            padding: 17px;
+            border: none;
+            border-radius: 11px;
+            background: #635bff;
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .section {
-            border-top: 1px solid #eaecf0;
-            padding-top: 25px;
-            margin-top: 30px;
+        .calculate-button:hover {
+            background: #5148d8;
         }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #98a2b3;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .hero {
+                padding: 60px 0 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero-text {
+                font-size: 17px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .factors {
+                grid-template-columns: 1fr;
+            }
+
+            .example-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .example-product {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .calculator {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            nav {
+                height: 65px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <div class="container">
 
-    <h1>Is It Worth It?</h1>
+    <nav>
 
-    <p class="subtitle">
-        Find out whether your next purchase is actually worth the money.
-        Answer a few questions and get your personalized verdict.
-    </p>
-
-    <form id="calculatorForm">
-
-        <h2>About the purchase</h2>
-
-        <label for="product">
-            What are you thinking about buying?
-        </label>
-
-        <input
-            type="text"
-            id="product"
-            placeholder="e.g. iPhone 17, laptop, motorcycle..."
-            required
-        >
-
-        <label for="category">
-            Category
-        </label>
-
-        <select id="category" required>
-            <option value="">Select a category</option>
-            <option value="electronics">Electronics</option>
-            <option value="vehicle">Car / Motorcycle</option>
-            <option value="fashion">Fashion</option>
-            <option value="home">Home</option>
-            <option value="gaming">Gaming</option>
-            <option value="fitness">Fitness</option>
-            <option value="other">Other</option>
-        </select>
-
-        <label for="price">
-            Purchase price
-        </label>
-
-        <input
-            type="number"
-            id="price"
-            placeholder="e.g. 999"
-            min="0"
-            step="0.01"
-            required
-        >
-
-        <label for="currency">
-            Currency
-        </label>
-
-        <select id="currency">
-            <option value="€">EUR (€)</option>
-            <option value="$">USD ($)</option>
-            <option value="£">GBP (£)</option>
-        </select>
-
-        <div class="section">
-
-            <h2>How will you use it?</h2>
-
-            <label for="years">
-                How many years do you expect to use it?
-            </label>
-
-            <input
-                type="number"
-                id="years"
-                placeholder="e.g. 4"
-                min="0.5"
-                step="0.5"
-                required
-            >
-
-            <label for="frequency">
-                How often will you use it?
-            </label>
-
-            <select id="frequency" required>
-                <option value="">Select frequency</option>
-                <option value="daily">Every day</option>
-                <option value="weekly">Several times a week</option>
-                <option value="monthly">A few times a month</option>
-                <option value="rarely">Rarely</option>
-            </select>
-
+        <div class="logo">
+            Is It <span>Worth It?</span>
         </div>
 
-        <div class="section">
+        <a href="#calculator" class="nav-link">
+            Try the calculator →
+        </a>
 
-            <h2>Your finances</h2>
-
-            <label for="income">
-                Monthly income
-            </label>
-
-            <input
-                type="number"
-                id="income"
-                placeholder="e.g. 1800"
-                min="0"
-                step="0.01"
-                required
-            >
-
-            <label for="expenses">
-                Monthly essential expenses
-            </label>
-
-            <input
-                type="number"
-                id="expenses"
-                placeholder="e.g. 1000"
-                min="0"
-                step="0.01"
-                required
-            >
-
-        </div>
-
-        <div class="section">
-
-            <h2>How much do you want it?</h2>
-
-            <label for="desire">
-                How badly do you want this purchase? (1–10)
-            </label>
-
-            <input
-                type="number"
-                id="desire"
-                min="1"
-                max="10"
-                placeholder="e.g. 8"
-                required
-            >
-
-            <label for="alternative">
-                Is there a cheaper alternative?
-            </label>
-
-            <select id="alternative">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-
-        </div>
-
-        <button type="submit" class="button">
-            Calculate my result
-        </button>
-
-    </form>
+    </nav>
 
 </div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="badge">
+            Make better purchase decisions
+        </div>
+
+        <h1>
+            Should you buy it?
+            <span>Find out first.</span>
+        </h1>
+
+        <p class="hero-text">
+            Is It Worth It? helps you decide whether a purchase
+            actually makes sense for you — based on the price,
+            your finances, how much you'll use it, and how badly
+            you want it.
+        </p>
+
+        <a href="#calculator" class="hero-button">
+            Analyze a purchase →
+        </a>
+
+        <div class="hero-note">
+            Takes about 60 seconds · Free to use
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-label">
+            How it works
+        </div>
+
+        <h2 class="section-title">
+            A better way to think before you buy.
+        </h2>
+
+        <p class="section-description">
+            Instead of relying on impulse or guesswork,
+            we look at the purchase from several different angles.
+        </p>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <h3>
+                    Tell us what you're buying
+                </h3>
+
+                <p>
+                    Enter the product, its price and how long
+                    you expect to keep it.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <h3>
+                    Tell us about you
+                </h3>
+
+                <p>
+                    Give us a few details about your income,
+                    expenses, usage and how much you want it.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <h3>
+                    Get your verdict
+                </h3>
+
+                <p>
+                    We combine the information into a personalized
+                    score and explain whether the purchase makes sense.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXAMPLE
+========================= -->
+
+<section class="section example-section">
+
+    <div class="container">
+
+        <div class="section-label">
+            Example
+        </div>
+
+        <h2 class="section-title">
+            What does the result actually look like?
+        </h2>
+
+        <p class="section-description">
+            Imagine you're considering a €1,000 purchase.
+            Here's the kind of analysis you could receive.
+        </p>
+
+
+        <div class="example-card">
+
+            <div class="example-product">
+
+                <h3>
+                    Example Laptop
+                </h3>
+
+                <div class="example-price">
+                    €1,000
+                </div>
+
+            </div>
+
+
+            <div class="example-result">
+
+                <div class="result-badge">
+                    GOOD VALUE
+                </div>
+
+                <h3>
+                    Yes — it looks worth it.
+                </h3>
+
+                <p>
+                    You use it frequently, expect to keep it for
+                    several years, and the purchase represents a
+                    manageable portion of your available income.
+                </p>
+
+            </div>
+
+
+            <div class="example-stats">
+
+                <div class="example-stat">
+
+                    <small>
+                        Score
+                    </small>
+
+                    <strong>
+                        82 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="example-stat">
+
+                    <small>
+                        Monthly cost
+                    </small>
+
+                    <strong>
+                        €20.83
+                    </strong>
+
+                </div>
+
+
+                <div class="example-stat">
+
+                    <small>
+                        Expected use
+                    </small>
+
+                    <strong>
+                        4 years
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHAT WE ANALYZE
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-label">
+            The analysis
+        </div>
+
+        <h2 class="section-title">
+            It's not just about the price.
+        </h2>
+
+        <p class="section-description">
+            A €500 purchase can be a terrible decision for one person
+            and an amazing decision for another.
+        </p>
+
+
+        <div class="factors">
+
+            <div class="factor">
+
+                <strong>
+                    💰 Affordability
+                </strong>
+
+                <span>
+                    How does the purchase compare with your
+                    disposable income?
+                </span>
+
+            </div>
+
+
+            <div class="factor">
+
+                <strong>
+                    ⏳ Longevity
+                </strong>
+
+                <span>
+                    How long do you expect to use the product?
+                </span>
+
+            </div>
+
+
+            <div class="factor">
+
+                <strong>
+                    🔄 Frequency of use
+                </strong>
+
+                <span>
+                    Will you use it every day or only occasionally?
+                </span>
+
+            </div>
+
+
+            <div class="factor">
+
+                <strong>
+                    ❤️ Desire
+                </strong>
+
+                <span>
+                    How much do you actually want the purchase?
+                </span>
+
+            </div>
+
+
+            <div class="factor">
+
+                <strong>
+                    🔎 Alternatives
+                </strong>
+
+                <span>
+                    Is there a cheaper option that could do
+                    almost the same job?
+                </span>
+
+            </div>
+
+
+            <div class="factor">
+
+                <strong>
+                    📊 Overall value
+                </strong>
+
+                <span>
+                    We combine everything into one easy-to-understand
+                    recommendation.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CALCULATOR
+========================= -->
+
+<section class="section calculator-section" id="calculator">
+
+    <div class="container">
+
+        <div class="section-label">
+            Start your analysis
+        </div>
+
+        <h2 class="section-title">
+            Is your purchase worth it?
+        </h2>
+
+        <p class="section-description">
+            Answer a few questions. We'll do the math.
+        </p>
+
+
+        <div class="calculator">
+
+            <form id="calculatorForm">
+
+
+                <!-- PURCHASE -->
+
+                <div class="form-section">
+
+                    <h3>
+                        About the purchase
+                    </h3>
+
+
+                    <label for="product">
+                        What are you thinking about buying?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="product"
+                        placeholder="e.g. iPhone 17, laptop, motorcycle..."
+                        required
+                    >
+
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="electronics">
+                            Electronics
+                        </option>
+
+                        <option value="vehicle">
+                            Car / Motorcycle
+                        </option>
+
+                        <option value="fashion">
+                            Fashion
+                        </option>
+
+                        <option value="home">
+                            Home
+                        </option>
+
+                        <option value="gaming">
+                            Gaming
+                        </option>
+
+                        <option value="fitness">
+                            Fitness
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <label for="price">
+                        Purchase price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        placeholder="e.g. 999"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+
+                    <label for="currency">
+                        Currency
+                    </label>
+
+                    <select id="currency">
+
+                        <option value="€">
+                            EUR (€)
+                        </option>
+
+                        <option value="$">
+                            USD ($)
+                        </option>
+
+                        <option value="£">
+                            GBP (£)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- USAGE -->
+
+                <div class="form-section">
+
+                    <h3>
+                        How will you use it?
+                    </h3>
+
+
+                    <label for="years">
+                        How many years do you expect to use it?
+                    </label>
+
+                    <input
+                        type="number"
+                        id="years"
+                        placeholder="e.g. 4"
+                        min="0.5"
+                        step="0.5"
+                        required
+                    >
+
+
+                    <label for="frequency">
+                        How often will you use it?
+                    </label>
+
+                    <select id="frequency" required>
+
+                        <option value="">
+                            Select frequency
+                        </option>
+
+                        <option value="daily">
+                            Every day
+                        </option>
+
+                        <option value="weekly">
+                            Several times a week
+                        </option>
+
+                        <option value="monthly">
+                            A few times a month
+                        </option>
+
+                        <option value="rarely">
+                            Rarely
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FINANCES -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Your finances
+                    </h3>
+
+
+                    <label for="income">
+                        Monthly income
+                    </label>
+
+                    <input
+                        type="number"
+                        id="income"
+                        placeholder="e.g. 1800"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+
+                    <label for="expenses">
+                        Monthly essential expenses
+                    </label>
+
+                    <input
+                        type="number"
+                        id="expenses"
+                        placeholder="e.g. 1000"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESIRE -->
+
+                <div class="form-section">
+
+                    <h3>
+                        One last thing
+                    </h3>
+
+
+                    <label for="desire">
+                        How badly do you want this purchase? (1–10)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="desire"
+                        min="1"
+                        max="10"
+                        placeholder="e.g. 8"
+                        required
+                    >
+
+
+                    <label for="alternative">
+                        Is there a cheaper alternative?
+                    </label>
+
+                    <select id="alternative">
+
+                        <option value="no">
+                            No
+                        </option>
+
+                        <option value="yes">
+                            Yes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="calculate-button"
+                >
+                    Calculate my result →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        Is It Worth It? · Make smarter purchase decisions.
+
+    </div>
+
+</footer>
+
 
 <script>
 
@@ -272,16 +1132,46 @@
 
             event.preventDefault();
 
-            const product = document.getElementById("product").value.trim();
-            const category = document.getElementById("category").value;
-            const price = parseFloat(document.getElementById("price").value);
-            const currency = document.getElementById("currency").value;
-            const years = parseFloat(document.getElementById("years").value);
-            const frequency = document.getElementById("frequency").value;
-            const income = parseFloat(document.getElementById("income").value);
-            const expenses = parseFloat(document.getElementById("expenses").value);
-            const desire = parseInt(document.getElementById("desire").value);
-            const alternative = document.getElementById("alternative").value;
+            const product =
+                document.getElementById("product").value.trim();
+
+            const category =
+                document.getElementById("category").value;
+
+            const price =
+                parseFloat(
+                    document.getElementById("price").value
+                );
+
+            const currency =
+                document.getElementById("currency").value;
+
+            const years =
+                parseFloat(
+                    document.getElementById("years").value
+                );
+
+            const frequency =
+                document.getElementById("frequency").value;
+
+            const income =
+                parseFloat(
+                    document.getElementById("income").value
+                );
+
+            const expenses =
+                parseFloat(
+                    document.getElementById("expenses").value
+                );
+
+            const desire =
+                parseInt(
+                    document.getElementById("desire").value
+                );
+
+            const alternative =
+                document.getElementById("alternative").value;
+
 
             if (
                 !product ||
@@ -293,32 +1183,51 @@
                 isNaN(expenses) ||
                 isNaN(desire)
             ) {
+
                 alert("Please complete all required fields.");
+
                 return;
             }
 
+
             const purchaseData = {
+
                 product: product,
+
                 category: category,
+
                 price: price,
+
                 currency: currency,
+
                 years: years,
+
                 frequency: frequency,
+
                 income: income,
+
                 expenses: expenses,
+
                 desire: desire,
+
                 alternative: alternative
+
             };
+
 
             localStorage.setItem(
                 "purchaseData",
                 JSON.stringify(purchaseData)
             );
 
-            window.location.href = "results.html";
+
+            window.location.href =
+                "results.html";
+
         });
 
 </script>
+
 
 </body>
 
